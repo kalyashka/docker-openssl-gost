@@ -48,6 +48,7 @@ sed -i "s|libssl-dev | |g" Dockerfile
 # Enable new versions again after apt-get
 echo "COPY --from=openssl-gost /usr/local/ssl/bin/openssl /usr/bin/openssl" >> Dockerfile
 echo "COPY --from=openssl-gost /usr/local/curl/bin/curl /usr/bin/curl" >> Dockerfile
+echo "RUN cp -r /etc/ssl/certs/ /usr/local/ssl/" >> Dockerfile
 
 sed -i 's|GENERATED VIA "update.sh"|GENERATED VIA "update.sh" AND UPDATED VIA openssl-gost|g' Dockerfile
 
